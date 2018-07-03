@@ -1,0 +1,3 @@
+controllers:
+    resource: '@OptimaxHealthCheckBundle/Controller/'
+    type: annotation

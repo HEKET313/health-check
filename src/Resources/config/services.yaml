@@ -1,0 +1,9 @@
+services:
+  _instanceof:
+    Optimax\HealthCheckBundle\Service\HealthInterface:
+      tags: ['health.service']
+
+  Optimax\HealthCheck\Controller\HealthController:
+    autowire: true
+    public: false
+    autoconfigure: true
