@@ -17,7 +17,7 @@ class HealthServicesPath implements CompilerPassInterface
         }
 
         $controller = $container->findDefinition(HealthController::class);
-        foreach ($container->findTaggedServiceIds(HealthInterface::TAG) as $serviceId) {
+        foreach (array_keys($container->findTaggedServiceIds(HealthInterface::TAG)) as $serviceId) {
             $controller->addMethodCall('addHealthService', [new Reference($serviceId)]);
         }
     }
