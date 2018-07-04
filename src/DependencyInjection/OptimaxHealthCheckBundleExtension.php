@@ -9,11 +9,11 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * Class OptimaxTemplateProcessorClientExtension
+ * Class OptimaxHealthCheckBundleExtension
  * @package Optimax\HealthCheckBundle\DependencyInjection
  * @codeCoverageIgnore
  */
-class OptimaxTemplateProcessorClientExtension extends Extension
+class OptimaxHealthCheckBundleExtension extends Extension
 {
     /**
      * {@inheritdoc}
