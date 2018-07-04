@@ -18,7 +18,7 @@ class HealthController extends AbstractController
     }
 
     /**
-     * @Route('/health')
+     * @Route("/health")
      * @return JsonResponse
      */
     public function getHealth(): JsonResponse
