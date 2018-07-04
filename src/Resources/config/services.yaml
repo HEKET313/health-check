@@ -1,8 +1,4 @@
 services:
-  _instanceof:
-    Optimax\HealthCheckBundle\Service\HealthInterface:
-      tags: [!php/const Optimax\HealthCheckBundle\Service\HealthInterface::TAG]
-
   Optimax\HealthCheckBundle\Controller\HealthController:
     autowire: true
     public: false
