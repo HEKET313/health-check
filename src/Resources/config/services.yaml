@@ -3,7 +3,7 @@ services:
     Optimax\HealthCheckBundle\Service\HealthInterface:
       tags: ['health.service']
 
-  Optimax\HealthCheck\Controller\HealthController:
+  Optimax\HealthCheckBundle\Controller\HealthController:
     autowire: true
     public: false
     autoconfigure: true
