@@ -7,6 +7,11 @@ use Optimax\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class OptimaxHealthCheckBundle
+ * @package Optimax\HealthCheckBundle
+ * @codeCoverageIgnore
+ */
 class OptimaxHealthCheckBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
@@ -15,5 +20,4 @@ class OptimaxHealthCheckBundle extends Bundle
         $container->addCompilerPass(new HealthServicesPath());
         $container->registerForAutoconfiguration(HealthInterface::class)->addTag(HealthInterface::TAG);
     }
-
 }

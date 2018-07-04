@@ -23,7 +23,7 @@ class HealthControllerTest extends TestCase
         [
             'name' => 'HealthService2',
             'info' => [
-                'status' => HealthDataInterface::STATUS_ERROR,
+                'status' => HealthDataInterface::STATUS_CRITICAL,
                 'additional_info' => [
                     'some_field_1' => 'info_1',
                     'some_field_2' => 'info_2'
@@ -54,7 +54,7 @@ class HealthControllerTest extends TestCase
         $container->method('has')->willReturn(false);
         $controller->setContainer($container);
         $controller->addHealthService($this->getHealthService('HealthService1', HealthDataInterface::STATUS_OK, []));
-        $controller->addHealthService($this->getHealthService('HealthService2', HealthDataInterface::STATUS_ERROR, [
+        $controller->addHealthService($this->getHealthService('HealthService2', HealthDataInterface::STATUS_CRITICAL, [
             'some_field_1' => 'info_1',
             'some_field_2' => 'info_2'
         ]));
