@@ -3,6 +3,7 @@
 namespace Optimax\HealthCheckBundle\DependencyInjection\Compiler;
 
 use Optimax\HealthCheckBundle\Controller\HealthController;
+use Optimax\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -16,7 +17,7 @@ class HealthServicesPath implements CompilerPassInterface
         }
 
         $controller = $container->findDefinition(HealthController::class);
-        foreach ($container->findTaggedServiceIds('health.service') as $serviceId) {
+        foreach ($container->findTaggedServiceIds(HealthInterface::TAG) as $serviceId) {
             $controller->addMethodCall('addHealthService', [new Reference($serviceId)]);
         }
     }
