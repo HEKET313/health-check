@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Loader;
  * @package Optimax\HealthCheckBundle\DependencyInjection
  * @codeCoverageIgnore
  */
-class OptimaxHealthCheckBundleExtension extends Extension
+class OptimaxHealthCheckExtension extends Extension
 {
     /**
      * {@inheritdoc}
