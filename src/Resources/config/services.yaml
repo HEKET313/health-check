@@ -1,0 +1,5 @@
+services:
+  Optimax\HealthCheckBundle\Controller\HealthController:
+    autowire: true
+    public: false
+    autoconfigure: true

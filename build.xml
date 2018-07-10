@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Optimax build" default="check">
+
+    <target name="check" depends="psr-2"/>
+
+    <target name="composer-validate">
+        <exec
+                executable="composer"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="validate"/>
+        </exec>
+    </target>
+
+    <target name="composer-install" depends="composer-validate">
+        <exec
+                executable="composer"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="version-check" depends="composer-install">
+        <exec
+                executable="vendor/bin/version-check"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        />
+    </target>
+
+    <target name="tests" depends="version-check">
+        <exec
+                executable="vendor/bin/phpunit"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg value="-c"/>
+            <arg value="phpunit.xml.dist"/>
+            <arg value="--coverage-clover=coverage.xml"/>
+            <arg path="tests"/>
+        </exec>
+    </target>
+
+    <target name="copy-paste" depends="check-coverage">
+        <exec
+                executable="vendor/bin/phpcpd"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="./tests"/>
+        </exec>
+        <exec
+                executable="vendor/bin/phpcpd"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="./src"/>
+        </exec>
+    </target>
+
+    <target name="phpmd" depends="phpstan">
+        <exec
+                executable="vendor/bin/phpmd"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="src"/>
+            <arg value="text"/>
+            <arg path="vendor/optimax/code-quality/phpmd.xml"/>
+        </exec>
+    </target>
+
+    <target name="phpmd-test" depends="phpmd">
+        <exec
+                executable="vendor/bin/phpmd"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="tests"/>
+            <arg value="text"/>
+            <arg path="vendor/optimax/code-quality/phpmd.xml"/>
+        </exec>
+    </target>
+
+    <target name="psr-2" depends="phpmd-test">
+        <exec
+                executable="vendor/bin/phpcs"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="src"/>
+            <arg path="tests"/>
+            <arg value="--standard=PSR2"/>
+        </exec>
+    </target>
+
+    <target name="phpstan" depends="copy-paste">
+        <property name="phpstan.config" value="phpstan.neon"/>
+        <exec
+                executable="php"
+                logoutput="true"
+                passthru="true"
+                checkreturn="true"
+        >
+            <arg path="vendor/bin/phpstan"/>
+            <arg value="analyse"/>
+            <arg value="-c"/>
+            <arg path="${phpstan.config}"/>
+            <arg value="-l"/>
+            <arg value="7"/>
+            <arg path="src"/>
+        </exec>
+    </target>
+
+    <target name="check-coverage" depends="tests">
+        <exec
+                executable="vendor/optimax/code-quality/pcheckcoverage"
+                logoutput="true"
+                checkreturn="true"
+        >
+            <arg path="coverage.xml"/>
+        </exec>
+    </target>
+</project>
