@@ -21,7 +21,16 @@
     "symfony/monolog-bundle": "^3.2"
   },
   "require-dev": {
-    "optimax/test-bundle": "^1.0"
+    "phpunit/phpunit": "^7.2",
+    "phpmd/phpmd": "^2.6",
+    "sebastian/phpcpd": "^4.0",
+    "squizlabs/php_codesniffer": "^3.1",
+    "phing/phing": "^2.16",
+    "phpstan/phpstan": "^0.9.2",
+    "lookyman/phpstan-symfony": "^0.5.0",
+    "phpstan/phpstan-phpunit": "^0.9.4",
+    "sensiolabs/security-checker": "^4.1",
+    "phpstan/phpstan-doctrine": "^0.9.1"
   },
   "scripts": {
     "auto-scripts": {
@@ -40,17 +49,10 @@
   "conflict": {
     "symfony/symfony": "*"
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://composer.gusadev.com"
-    }
-  ],
   "extra": {
     "symfony": {
       "id": "01C2BB7VK9WQJPQMHTK399MP3S",
-      "allow-contrib": false,
-      "endpoint": "https://flex.gusadev.com"
+      "allow-contrib": false
     }
   }
 }

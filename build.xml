@@ -25,16 +25,7 @@
         </exec>
     </target>
 
-    <target name="version-check" depends="composer-install">
-        <exec
-                executable="vendor/bin/version-check"
-                logoutput="true"
-                passthru="true"
-                checkreturn="true"
-        />
-    </target>
-
-    <target name="tests" depends="version-check">
+    <target name="tests" depends="composer-install">
         <exec
                 executable="vendor/bin/phpunit"
                 logoutput="true"
@@ -48,7 +39,7 @@
         </exec>
     </target>
 
-    <target name="copy-paste" depends="check-coverage">
+    <target name="copy-paste" depends="tests">
         <exec
                 executable="vendor/bin/phpcpd"
                 logoutput="true"
@@ -73,7 +64,7 @@
         >
             <arg path="src"/>
             <arg value="text"/>
-            <arg path="vendor/optimax/code-quality/phpmd.xml"/>
+            <arg path="phpmd.xml"/>
         </exec>
     </target>
 
@@ -85,7 +76,7 @@
         >
             <arg path="tests"/>
             <arg value="text"/>
-            <arg path="vendor/optimax/code-quality/phpmd.xml"/>
+            <arg path="phpmd.xml"/>
         </exec>
     </target>
 
@@ -116,16 +107,6 @@
             <arg value="-l"/>
             <arg value="7"/>
             <arg path="src"/>
-        </exec>
-    </target>
-
-    <target name="check-coverage" depends="tests">
-        <exec
-                executable="vendor/optimax/code-quality/pcheckcoverage"
-                logoutput="true"
-                checkreturn="true"
-        >
-            <arg path="coverage.xml"/>
         </exec>
     </target>
 </project>
