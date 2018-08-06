@@ -3,13 +3,13 @@
 namespace niklesh\HealthCheckBundle\DependencyInjection;
 
 use niklesh\HealthCheckBundle\Command\SendDataCommand;
-use niklesh\HealthCheckBundle\Service\HealthSenderInterface;
-use Reference;
+use niklesh\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class HealthCheckBundleExtension
@@ -29,15 +29,11 @@ class HealthCheckExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
-        $sendersDefinitions = array_map(function (string $serviceId) use ($container) {
-            return $container->findDefinition($serviceId);
-        }, $config['senders']);
-
         $commandDefinition = new Definition(SendDataCommand::class);
-        $commandDefinition->addArgument(...$sendersDefinitions);
-        foreach (array_keys($container->findTaggedServiceIds(HealthSenderInterface::TAG)) as $serviceId) {
-            $commandDefinition->addMethodCall('addHealthService', [new Reference($serviceId)]);
+        foreach ($config['senders'] as $serviceId) {
+            $commandDefinition->addArgument(new Reference($serviceId));
         }
+        $commandDefinition->addTag('console.command', ['command' => SendDataCommand::COMMAND_NAME]);
         $container->setDefinition(SendDataCommand::class, $commandDefinition);
     }
 }

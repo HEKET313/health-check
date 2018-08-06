@@ -33,6 +33,13 @@ class SendDataCommand extends ContainerAwareCommand
         $this->healthServices[] = $healthService;
     }
 
+    protected function configure()
+    {
+        parent::configure();
+        $this->setDescription('Send health data by senders');
+    }
+
+
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         parent::initialize($input, $output);

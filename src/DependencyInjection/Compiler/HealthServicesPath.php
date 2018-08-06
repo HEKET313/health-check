@@ -2,6 +2,7 @@
 
 namespace niklesh\HealthCheckBundle\DependencyInjection\Compiler;
 
+use niklesh\HealthCheckBundle\Command\SendDataCommand;
 use niklesh\HealthCheckBundle\Controller\HealthController;
 use niklesh\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -17,8 +18,10 @@ class HealthServicesPath implements CompilerPassInterface
         }
 
         $controller = $container->findDefinition(HealthController::class);
+        $commandDefinition = $container->findDefinition(SendDataCommand::class);
         foreach (array_keys($container->findTaggedServiceIds(HealthInterface::TAG)) as $serviceId) {
             $controller->addMethodCall('addHealthService', [new Reference($serviceId)]);
+            $commandDefinition->addMethodCall('addHealthService', [new Reference($serviceId)]);
         }
     }
 }
