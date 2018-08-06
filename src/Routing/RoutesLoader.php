@@ -14,7 +14,7 @@ class RoutesLoader extends Loader
     public function load($resource, $type = null)
     {
         $routes = new RouteCollection();
-        $routes->addCollection($this->import(__DIR__ . '/../Resources/config/routes.yaml', 'yaml'));
+        $routes->addCollection($this->import(__DIR__ . '/../Resources/config/routing.yaml', 'yaml'));
         return $routes;
     }
 
