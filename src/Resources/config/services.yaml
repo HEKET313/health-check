@@ -1,5 +1,5 @@
 services:
-  Optimax\HealthCheckBundle\Controller\HealthController:
+  niklesh\HealthCheckBundle\Controller\HealthController:
     autowire: true
     public: false
     autoconfigure: true

@@ -1,10 +1,10 @@
 <?php
 
-namespace Optimax\HealthCheckBundle\Entity;
+namespace niklesh\HealthCheckBundle\Entity;
 
 /**
  * Class CommonHealthData
- * @package Optimax\HealthCheckBundle\Entity
+ * @package niklesh\HealthCheckBundle\Entity
  * @codeCoverageIgnore
  */
 class CommonHealthData implements HealthDataInterface

@@ -1,8 +1,8 @@
 <?php
 
-namespace Optimax\HealthCheckBundle\Service;
+namespace niklesh\HealthCheckBundle\Service;
 
-use Optimax\HealthCheckBundle\Entity\HealthDataInterface;
+use niklesh\HealthCheckBundle\Entity\HealthDataInterface;
 
 interface HealthInterface
 {

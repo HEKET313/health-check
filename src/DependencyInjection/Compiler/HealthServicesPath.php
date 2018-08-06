@@ -1,9 +1,9 @@
 <?php
 
-namespace Optimax\HealthCheckBundle\DependencyInjection\Compiler;
+namespace niklesh\HealthCheckBundle\DependencyInjection\Compiler;
 
-use Optimax\HealthCheckBundle\Controller\HealthController;
-use Optimax\HealthCheckBundle\Service\HealthInterface;
+use niklesh\HealthCheckBundle\Controller\HealthController;
+use niklesh\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;

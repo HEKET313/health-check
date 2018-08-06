@@ -1,8 +1,8 @@
 <?php
 
-namespace Optimax\HealthCheckBundle\Controller;
+namespace niklesh\HealthCheckBundle\Controller;
 
-use Optimax\HealthCheckBundle\Service\HealthInterface;
+use niklesh\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;

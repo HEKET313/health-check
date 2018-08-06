@@ -1,16 +1,16 @@
 {
-  "name": "optimax/health-check",
+  "name": "niklesh/health-check",
   "description": "Health check bundle",
   "type": "symfony-bundle",
   "license": "proprietary",
   "autoload": {
     "psr-4": {
-      "Optimax\\HealthCheckBundle\\": "src"
+      "niklesh\\HealthCheckBundle\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Optimax\\HealthCheckBundle\\Tests\\": "tests"
+      "niklesh\\HealthCheckBundle\\Tests\\": "tests"
     }
   },
   "require": {
