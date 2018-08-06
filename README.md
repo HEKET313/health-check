@@ -1,6 +1,22 @@
 # Health Check Bundle
 
-This bundle adds `/health` endpoints to project
+This bundle adds `/health` endpoints and `health:send-info` command to project.
 
-You must just add it to your project and create class(-es) which implement interface
-`Opitmax\HealthCheck\Service\HealthInterface`
+For using this bundle you have to add configuration files:
+
+* `config/routes/niklesh_health.yaml` (required)
+
+```yaml
+health_check:
+  resource: "@HealthCheckBundle/Controller/HealthController.php"
+  prefix: /
+  type: annotation
+```
+
+* `config/packages/hiklesh_health.yaml` (optional)
+
+```yaml
+health_check:
+  senders:
+    - 'App\Service\Sender'
+```

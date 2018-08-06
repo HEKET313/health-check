@@ -1,5 +1,5 @@
 {
-  "name": "niklesh/health-check",
+  "name": "niklesh/health-check-bundle",
   "description": "Health check bundle",
   "type": "symfony-bundle",
   "license": "proprietary",
