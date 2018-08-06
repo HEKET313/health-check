@@ -6,8 +6,6 @@ use niklesh\HealthCheckBundle\Entity\HealthDataInterface;
 
 interface HealthSenderInterface
 {
-    public const TAG = 'health.sender';
-
     /**
      * @param HealthDataInterface[] $data
      */

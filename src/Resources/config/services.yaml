@@ -1,8 +1,3 @@
 services:
   niklesh\HealthCheckBundle\Controller\HealthController:
-    autowire: true
-    public: false
     autoconfigure: true
-
-  niklesh\HealthCheckBundle\Routing\RoutesLoader:
-    tags: [routing.loader]

@@ -3,7 +3,6 @@
 namespace niklesh\HealthCheckBundle\DependencyInjection;
 
 use niklesh\HealthCheckBundle\Command\SendDataCommand;
-use niklesh\HealthCheckBundle\Service\HealthInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
